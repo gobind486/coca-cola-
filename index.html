@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coca-Cola - Taste the Feeling</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="coca-logo-spinner">🥤</div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Coca-Cola</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="login-btn" id="loginBtn">Login</button>
+                <button class="cart-btn" id="cartBtn">
+                    🛒 Cart
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Taste the Feeling</h1>
+            <p class="hero-subtitle">Experience the refreshing taste of Coca-Cola</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('products')">Buy Now</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('products')">Explore Drinks</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="floating-bottle">🥤</div>
+        </div>
+    </section>
+
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <p class="section-subtitle">Discover our amazing collection of refreshing drinks</p>
+            <div class="products-grid" id="productsGrid">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="bottle-display">🥤</div>
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">About Coca-Cola</h2>
+                    <p>Since 1886, Coca-Cola has been refreshing the world with its unique taste. More than just a beverage, Coca-Cola represents moments of happiness, togetherness, and celebration.</p>
+                    <p>Our commitment to quality and innovation has made us the world's most beloved soft drink brand. From the classic Coca-Cola to exciting new flavors, we continue to bring joy to millions around the globe.</p>
+                    <p>Every sip is a reminder that the best moments in life are meant to be shared.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">We'd love to hear from you</p>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Coca-Cola Clone. All rights reserved. This is a demo project.</p>
+        </div>
+    </footer>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal-content">
+            <div class="modal-header">
+                <h2>Shopping Cart</h2>
+                <span class="close-modal" id="closeCart">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems" class="cart-items"></div>
+                <div class="cart-total">
+                    <h3>Total: $<span id="cartTotal">0.00</span></h3>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="closeCartBtn">Continue Shopping</button>
+                <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Checkout Summary</h2>
+                <span class="close-modal" id="closeCheckout">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="checkoutItems" class="checkout-items"></div>
+                <div class="checkout-total">
+                    <h3>Total Amount: $<span id="checkoutTotal">0.00</span></h3>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelCheckout">Cancel</button>
+                <button class="btn btn-primary" id="proceedCheckout">Proceed</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content login-modal-content">
+            <div class="modal-header">
+                <h2 id="authTitle">Login</h2>
+                <span class="close-modal" id="closeLogin">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="authForm">
+                    <div class="form-group">
+                        <input type="email" id="authEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group" id="usernameGroup" style="display: none;">
+                        <input type="text" id="authUsername" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="authPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="authSubmitBtn">Login</button>
+                </form>
+                <div class="auth-switch">
+                    <p id="authSwitchText">Don't have an account? <span id="authSwitchLink">Register</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
